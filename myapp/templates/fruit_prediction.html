@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Fruit Recognition</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.jpg" />
+    <script>
+      function resetText() {
+        var textElement = document.getElementsByClassName("predi");
+        textElement.textContent = "";
+        var textElement = document.getElementsByClassName("predi");
+        textElement.textContent = "";
+      }
+    </script>
+  </head>
+  <body class="bg-gray-200">
+    <header class="text-gray-600 body-font -my-8">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <img
+            src="../static/Images/icon.png"
+            class="w-10 h-10 text-white p-1 bg-green-500 rounded-full"
+            viewBox="0 0 24 24"
+          />
+          <span class="ml-3 text-xl">Fruit and Vegetable Recognition</span>
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="/" class="mr-5 hover:text-gray-900">Home</a>
+          <a href="/about" class="mr-5 hover:text-gray-900">About us</a>
+          <a href="/fruit_prediction/" class="mr-5 hover:text-gray-900"
+            >Fruits Prediction</a
+          >
+          <a href="/veg_prediction/" class="mr-5 hover:text-gray-900"
+            >Vegetables Prediction</a
+          >
+          <!-- <a href="/contact" class="mr-5 hover:text-gray-900">Contact us</a> -->
+        </nav>
+      </div>
+    </header>
+    <hr />
+    <section class="text-gray-600 body-font -my-8">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex">
+          <div class="flex flex-col text-center w-full mb-20 ms-1">
+            <h2
+              class="text-xs text-green-500 tracking-widest font-medium title-font mb-1"
+            >
+              Machine learning project
+            </h2>
+            <h1
+              class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+            >
+              Fruit Recognition
+            </h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Our proposed system is capable of finding the quality of fruit by
+              using the classification algorithm of supervised learning
+              technique in a short span of time with high accuracy. These
+              features are used to classify the fruits into different categories
+              like fresh and rotten fruits.
+            </p>
+            <br />
+
+            <p className="text-primary predi"><b>{{prediction}}</b></p>
+            <br />
+            <p className="text-primary confi"><b>{{confidence}}</b></p>
+            <br />
+            {% if image_filename %}
+            <img
+              src="../{{ image_filename }}"
+              width="200px"
+              height="200px"
+              alt="Uploaded Image"
+              class="object-cover object-center rounded"
+              style="margin-left: 350px"
+            />
+            {% endif %}
+          </div>
+          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+            <img
+              class="object-cover object-center rounded"
+              width="300px"
+              height="300px"
+              alt="hero"
+              src="../static/Images/image.png"
+            />
+          </div>
+        </div>
+
+        <div class="center">
+          <form
+            action="/fruit_prediction/"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Select fruit image</label
+              >
+              <input
+                type="file"
+                class="form-control"
+                required
+                id="fruit"
+                name="fruit"
+                autocomplete="off"
+                aria-describedby="emailHelp"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
